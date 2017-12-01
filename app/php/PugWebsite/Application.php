@@ -69,11 +69,23 @@ class Application
 
 	public function render($url)
 	{
-		$options = [];
+		$contentDir = PUBLIC_DIR . '/content';
+
+		$options = [
+			'cache'   => PUBLIC_DIR . '/../cache',
+			// 'basedir' => PUBLIC_DIR . '/templates'
+		];
 		$pug = new Pug($options);
 
-		var_dump($url); exit;
+		$file = $contentDir . '/' . trim($url, '/') . '.pug';
+		if ('/.pug' == substr($file, -5)) {
+			$file = $contentDir . '/' . trim($url, '/') . '.index.pug';
+		}
+		if (!file_exists($file)) {
+			$file = $contentDir . '/404.pug';
+		}
 
+		// var_dump($file, $options['basedir']); exit;
 		return $pug->render($file);
 	}
 

@@ -1,0 +1,36 @@
+doctype html
+html(lang='en')
+
+  block head
+    head
+      meta(charset='UTF-8')
+      // For Resposive Device
+      meta(name='viewport', content='width=device-width, initial-scale=1.0')
+      // For IE
+      meta(http-equiv='X-UA-Compatible', content='IE=edge')
+
+      block head_title
+     		title
+     			| Index layout
+      
+      block head_description
+      	meta(name='description', content= seo.description)
+
+      include ../blocks/__stylesheets.pug
+
+  block body
+    body
+      block body_header
+        // Header Top _________________________________
+        include ../blocks/nav/header.pug
+        
+      block body_content
+      	.container
+      		h1
+      			| Header text
+
+      block body_footer
+        // home Footer section ____________________________
+        include ../blocks/nav/footer.pug
+      
+      include ../blocks/__scripts.pug
