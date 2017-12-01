@@ -1,4 +1,4 @@
 /vendor/
 /node_modules/
-css/bundle.*
-js/bundle.*
+assets/css/bundle.*
+assets/js/bundle.*
