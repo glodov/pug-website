@@ -1,0 +1,11 @@
+{
+	"cache": {
+		"provider": "redis",
+		"options": {
+			
+		},
+		"database": 1,
+		"timeout": false,
+		"includeGet": false
+	}
+}

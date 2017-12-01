@@ -1,0 +1,24 @@
+{
+    "name": "glodov/pug-website",
+    "type": "library",
+    "version": "0.1.1",
+    "description": "PUG Website - fast website builder on Pug template engine",
+    "homepage": "https://github.com/glodov/pug-website",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yaroslav Glodov",
+            "email": "glodov@gmail.com",
+            "homepage": "https://yaro.info"
+        }
+    ],
+    "autoload": {
+        "psr-4" : {
+            "PugWebsite\\" : "app/php/PugWebsite"
+        }
+    },    
+    "require": {
+        "predis/predis": "^1.1",
+        "pug-php/pug": "^3.1"
+    }
+}
