@@ -1,8 +1,219 @@
 extends ../templates/layout/index.pug
 
+block body_header
+  nav.bg-light.bg-white.navbar.sticky-top.navbar-toggleable-lg.simple.pt-0
+    .container
+      .hidden-xl-up
+        .container.p-c-sm-0
+          .d-flex.justify-content-between
+            button.navbar-toggler.bg-primary.mt-4.collapsed(
+              type='button'
+              data-toggle='collapse'
+              data-target='#main-nav'
+              aria-controls='main-nav'
+              aria-expanded='false'
+              aria-label='Toggle navigation'
+            )
+              span.nav-label
+                i.fa.fa-bars.label(aria-hidden='true')
+            a.navbar-brand.bg-image.m-0(
+              style='background-image: url("/themes/wf-2/assets/img/logo.jpg"); background-position: center'
+            )
+            span.widgets-wrap.mt-4
+              span.cart-widget.tablet(cart-widget='')
+                a(href='/cart', cart-url='', style='display: none;')
+                i.fa.fa-shopping-cart.bg-primary.label
+                span.border.border-gray-light.border-left-transparent.small.hidden-sm-down(cart-qqt='') 
+                  | € 0
+      .hidden-lg-down.mt-3
+        a.navbar-brand.bg-image(
+          style='background-image: url("/themes/wf-2/assets/img/logo.jpg"); background-position: center'
+        )
+      #main-nav.navbar-collapse.collapse(aria-expanded='false', style='')
+        ul.nav.navbar-nav.mt-2.mt-lg-5.py-3.pt-lg-4.text-uppercase
+          li.text-right.button-wrap
+            button.navbar-toggler.bg-primary.p-2.collapsed(
+              type='button'
+              data-toggle='collapse'
+              data-target='#main-nav'
+              aria-controls='main-nav'
+              aria-expanded='false'
+              aria-label='Toggle navigation'
+            )
+              span.nav-label
+                i.fa.icon-icon-close(aria-hidden='true')
+          li.nav-item.mr-lg-1.big-y
+            a.nav-link.mt-1(href='/') 
+              | Home
+          li.nav-item.dropdown.mr-lg-1.big-y
+            a.nav-link.mt-1(
+              href='#'
+              data-toggle='dropdown'
+              aria-haspopup='true'
+              aria-expanded='false'
+              role='button'
+            ) 
+              | Tasting tavern
+            .dropdown-menu
+              a.nav-link.mt-1(href='/tasting-tavern')
+                | Tasting bar
+              a.nav-link.mt-1(href='/tasting-tavern/tasting')
+                | Private tasting
+              a.nav-link.mt-1(href='/tasting-tavern/history')
+                | History
+          li.nav-item.mr-lg-1.big-y
+            a.nav-link.mt-1(href='/the-liquor-store')
+              | The liquor store
+          li.nav-item.dropdown.mr-lg-1.big-y.bg-primary.big-x
+            a.nav-link.mt-1(
+              href='#'
+              data-toggle='dropdown'
+              aria-haspopup='true'
+              aria-expanded='false'
+              role='button'
+            ) 
+              | Shop
+            .dropdown-menu
+              a.nav-link.mt-1(href='/products/bitter') 
+                | Bitter
+              a.nav-link.mt-1(href='/products/brandy') 
+                | Brandy
+              a.nav-link.mt-1(href='/products/genever') 
+                | Genever
+              a.nav-link.mt-1(href='/products/liqueurs') 
+                | Liqueurs
+          li.nav-item.mr-lg-1.big-y
+            a.nav-link.mt-1(href='/contact') 
+              | Contact
+          .py-2.pl-3.hidden-xl-up(mobile-submenu='')
+            .widgets-wrap.nav-item
+              .cart-widget(cart-widget='')
+                a(href='/cart', cart-url='', style='display: none;')
+                i.fa.fa-shopping-cart.bg-primary.label
+                span.border.border-gray-light.border-left-transparent.small(cart-qqt='') 
+                  | € 0
+            div(account-nav='')
+              ul.nav.navbar-nav.pull-left.text-capitalize(data-state='user-off')
+                li.nav-item.dropdown.ml-lg-0.mr-xl-1.px-lg-2.border.border-gray-light
+                  a.nav-link.dropdown-toggle(
+                    href='#'
+                    data-toggle='dropdown'
+                    aria-haspopup='true'
+                    aria-expanded='false'
+                  )
+                    | Account
+                  .dropdown-menu
+                    a.nav-link.pl-xl-3(
+                      role='button'
+                      href='#'
+                      data-toggle='modal'
+                      data-target='#wrap-sign-in'
+                    ) 
+                      | Login
+                    a.nav-link.pl-xl-3(
+                      role='button'
+                      href='#'
+                      data-toggle='modal'
+                      data-target='#wrap-sign-up'
+                    )
+                      | Sign up
+              ul.nav.navbar-nav.pull-left(
+                data-state='user-on'
+                style='display: none'
+              )
+                li.nav-item.dropdown.mr-1.px-xl-3.px-1
+                  a.nav-link.dropdown-toggle.pl-xl-0.pr-xl-3.min-w-6(
+                    href='#'
+                    data-toggle='dropdown'
+                    aria-haspopup='true'
+                    aria-expanded='false'
+                  )
+                    span(account-name='') 
+                      | Account
+                  .dropdown-menu(data-items='')
+                    a.nav-link.pl-xl-3(href='/account/dashboard') 
+                      | Dashboard
+                    a.nav-link.pl-xl-3(role='button', href='#', logout='')
+                      | Logout
+            .mt-m1
+              a.text-muted.small.ml-4(
+                href='#'
+                data-toggle='modal'
+                data-target='#wrap-regionlist'
+              ) 
+                | EN | NL
+        .hidden-lg-down.widgets-wrap
+          .lang-widget
+            span.text-muted.small.text-uppercase.cursor-pointer(
+              href='#'
+              data-toggle='modal'
+              data-target='#wrap-regionlist'
+            ) 
+              | EN | NL
+          .account-wrap(account-nav='')
+            ul.nav.navbar-nav.pull-left.text-capitalize(data-state='user-off')
+              li.nav-item.dropdown.ml-lg-0.mr-xl-1.px-lg-2.border.border-gray-light
+                a.nav-link.dropdown-toggle(
+                  href='#'
+                  data-toggle='dropdown'
+                  aria-haspopup='true'
+                  aria-expanded='false'
+                )
+                  | Account
+                .dropdown-menu
+                  a.nav-link.pl-xl-3(
+                    role='button'
+                    href='#'
+                    data-toggle='modal'
+                    data-target='#wrap-sign-in'
+                  )
+                    | Login
+                  a.nav-link.pl-xl-3(
+                    role='button'
+                    href='#'
+                    data-toggle='modal'
+                    data-target='#wrap-sign-up'
+                  )
+                    | Sign up
+            ul.nav.navbar-nav.pull-left(data-state='user-on', style='display: none')
+              li.nav-item.dropdown.mr-1.px-xl-3.px-1
+                a.nav-link.dropdown-toggle.pl-xl-0.pr-xl-3.min-w-6(
+                  href='#'
+                  data-toggle='dropdown'
+                  aria-haspopup='true'
+                  aria-expanded='false'
+                )
+                  span(account-name='') 
+                    | Account
+                .dropdown-menu(data-items='')
+                  a.nav-link.pl-xl-3(href='/account/dashboard') 
+                    | Dashboard
+                  a.nav-link.pl-xl-3(role='button', href='#', logout='') 
+                    | Logout
+          .cart-widget(cart-widget='')
+            a(href='/cart', cart-url='', style='display: none;')
+            i.fa.fa-shopping-cart.bg-primary.label
+            span.border.border-gray-light.border-left-transparent.small(cart-qqt='') 
+              | € 0
+
+
 block body_content
 
   .container.py-5#app
+    .row
+      .col-12
+        p.h1 
+          | h1. Bootstrap heading
+        p.h2 
+          | h2. Bootstrap heading
+        p.h3 
+          | h3. Bootstrap heading
+        p.h4 
+          | h4. Bootstrap heading
+        p.h5 
+          | h5. Bootstrap heading
+        p.h6 
+          | h6. Bootstrap heading
 
     .row
       .col-md-6
